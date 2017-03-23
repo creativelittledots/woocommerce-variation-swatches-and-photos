@@ -114,7 +114,9 @@
                                 }
 
                             } else {
-                                this.variations_current[attribute][maybe_available_attribute_value] = 1;
+	                            if(this.variations_current[attribute]) {
+		                        	this.variations_current[attribute][maybe_available_attribute_value] = 1;
+	                            }
                             }
                         }
 
@@ -281,6 +283,7 @@
                         $label.html($wc_select_box.children("[value='" + attr_val + "']").eq(0).text());
                     }
                 }
+                $wc_select_box.trigger( 'option_selected', [$this.data('value')] );
             })
             .on('change', '.radio-option', function (e) {
 
